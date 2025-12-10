@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <!-- MISTRZOWSKIE SEO ON-PAGE -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghosty! | Automatyzacja Firmy, n8n & Chatboty AI</title>
+    <meta
+      name="description"
+      content="Odzyskaj czas i zwiększ zyski dzięki automatyzacji. Ghosty! wdraża chatboty AI, automatyczny obieg faktur i systemy, które pracują 24/7. Skup się na rozwoju, resztę zautomatyzuj."
+    />
+    <meta
+      name="keywords"
+      content="automatyzacja n8n, chatboty ai, automatyzacja faktur, optymalizacja firmy, oszczędzanie czasu, wdrażanie ai, ghosty automation"
+    />
+    <meta name="author" content="Ghosty! Team" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ghosty.pl/" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="business.business" />
+    <meta property="og:title" content="Ghosty! - Twoja Firma na Autopilocie" />
+    <meta
+      property="og:description"
+      content="Przestań tracić czas na nudne zadania. Zobacz, jak nasze boty mogą pracować dla Ciebie."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/050505/39FF14/png?text=Ghosty!+Automation"
+    />
+    <meta property="og:url" content="https://ghosty.pl" />
+    <meta property="og:locale" content="pl_PL" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Ghosty!",
+        "image": "https://ghosty.pl/logo.png",
+        "description": "Profesjonalne usługi automatyzacji procesów biznesowych i wdrażania AI.",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Warszawa",
+          "addressCountry": "PL"
+        }
+      }
+    </script>
+
+    <!-- Biblioteki -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --neon-green: #39ff14;
+        --dark-bg: #050505;
+        --card-bg: rgba(15, 15, 15, 0.9);
+        --border-col: #1a1a1a;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: var(--dark-bg);
+        color: #e0e0e0;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* --- TYPOGRAFIA --- */
+      h1,
+      h2,
+      h3,
+      h4,
+      .mono-font,
+      nav,
+      button,
+      .btn-ghosty,
+      .nav-link,
+      .n8n-text {
+        font-family: "Space Mono", monospace;
+      }
+
+      .text-neon {
+        color: var(--neon-green);
+        text-shadow: 0 0 12px rgba(57, 255, 20, 0.6);
+      }
+
+      /* --- BUTTONS --- */
+      .btn-ghosty {
+        background-color: var(--neon-green);
+        color: black;
+        font-weight: 800;
+        border: 1px solid var(--neon-green);
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-ghosty:hover {
+        box-shadow: 0 0 30px rgba(57, 255, 20, 0.7);
+        transform: translateY(-2px);
+        background-color: #fff;
+        border-color: #fff;
+      }
+
+      /* --- CARDS (OFERTA - STATYCZNE) --- */
+      .service-card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-col);
+        backdrop-filter: blur(5px);
+        transition: border-color 0.3s ease; /* Tylko zmiana koloru ramki */
+      }
+      .service-card:hover {
+        border-color: var(--neon-green);
+        /* Usunięto transform i box-shadow dla braku ruchu */
+      }
+      .service-card .icon-box {
+        /* Brak animacji */
+      }
+      .service-card:hover .icon-box {
+        background-color: var(--neon-green);
+        color: black;
+        /* Usunięto skalowanie i rotację */
+      }
+
+      /* --- DLACZEGO GHOSTY - POPRAWIONE IKONY --- */
+      .why-us-card .icon-circle {
+        transition: transform 0.6s ease, box-shadow 0.3s, color 0.3s,
+          border-color 0.3s;
+      }
+      .why-us-card:hover .icon-circle {
+        transform: rotate(360deg);
+        color: var(--neon-green);
+        border-color: var(--neon-green);
+        box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+        background-color: rgba(57, 255, 20, 0.1);
+      }
+
+      /* --- MARQUEE --- */
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+      }
+      .marquee-content {
+        display: inline-flex;
+        animation: scroll 30s linear infinite;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .marquee-gradient {
+        position: absolute;
+        top: 0;
+        width: 150px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .marquee-left {
+        left: 0;
+        background: linear-gradient(to right, var(--dark-bg), transparent);
+      }
+      .marquee-right {
+        right: 0;
+        background: linear-gradient(to left, var(--dark-bg), transparent);
+      }
+
+      /* --- WORKFLOW N8N STYLE --- */
+      .n8n-node {
+        background: #222;
+        border: 1px solid #444;
+        border-radius: 8px;
+        width: 180px;
+        padding: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+      .n8n-node-header {
+        height: 6px;
+        width: 100%;
+      }
+      .n8n-node-content {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .n8n-node.active {
+        border-color: #fff;
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(57, 255, 20, 0.2);
+      }
+      .connection-line {
+        transition: all 0.4s ease;
+        background: #333;
+      }
+      .connection-line.active {
+        background: var(--neon-green);
+        box-shadow: 0 0 8px var(--neon-green);
+      }
+
+      /* Step styles */
+      .step-circle {
+        transition: all 0.5s ease;
+        border: 2px solid #333;
+        color: #666;
+        background: #0a0a0a;
+      }
+      .step-circle.active-step {
+        border-color: var(--neon-green);
+        color: black;
+        background: var(--neon-green);
+        box-shadow: 0 0 25px rgba(57, 255, 20, 0.6);
+        transform: scale(1.1);
+      }
+
+      /* --- ANIMATIONS --- */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      .ghost-logo {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes neon-flicker {
+        0%,
+        19%,
+        21%,
+        23%,
+        25%,
+        54%,
+        56%,
+        100% {
+          text-shadow: 0 0 4px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14;
+          opacity: 1;
+        }
+        20%,
+        24%,
+        55% {
+          text-shadow: none;
+          opacity: 0.5;
+        }
+      }
+      .neon-blink {
+        animation: neon-flicker 3s infinite alternate;
+        color: var(--neon-green);
+      }
+
+      /* Success Modal Animation */
+      @keyframes popup-pop {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .popup-animate {
+        animation: popup-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          forwards;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--neon-green);
+      }
+
+      /* Canvas Styling - Only in Hero */
+      #hero-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body class="selection:bg-green-500 selection:text-black">
+    <!-- NAWIGACJA (PRZEZROCZYSTA, BEZ LOGO DUSZKA) -->
+    <nav
+      class="fixed w-full z-50 bg-transparent transition-all duration-300"
+      id="navbar"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between h-24">
+          <div
+            class="flex items-center gap-3 group cursor-pointer"
+            onclick="window.scrollTo(0,0)"
+          >
+            <span
+              class="text-3xl font-bold tracking-tighter text-white mono-font group-hover:text-neon transition-colors duration-300"
+              >Ghosty!</span
+            >
+          </div>
+
+          <div class="hidden md:flex items-center space-x-10">
+            <a
+              href="#about"
+              class="text-gray-400 hover:text-white transition-colors text-sm font-bold tracking-wide mono-font"
+              >DLACZEGO MY</a
+            >
+            <a
+              href="#workflow-demo"
+              class="text-gray-400 hover:text-white transition-colors text-sm font-bold tracking-wide mono-font"
+              >JAK TO DZIAŁA</a
+            >
+            <a
+              href="#services"
+              class="text-gray-400 hover:text-white transition-colors text-sm font-bold tracking-wide mono-font"
+              >OFERTA</a
+            >
+            <a
+              href="#contact"
+              class="px-6 py-2.5 border border-gray-700 hover:border-neon-green text-neon-green rounded-lg hover:bg-neon-green/10 transition-all text-sm font-bold uppercase tracking-widest shadow-[0_0_10px_rgba(57,255,20,0.1)] mono-font"
+              >Kontakt_</a
+            >
+          </div>
+
+          <div class="md:hidden flex items-center">
+            <button
+              onclick="toggleMobileMenu()"
+              class="text-white hover:text-neon p-2 focus:outline-none"
+            >
+              <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="md:hidden bg-black/95 border-b border-gray-800 absolute w-full transition-all duration-300 max-h-0 overflow-hidden opacity-0"
+      >
+        <div class="px-6 pt-4 pb-8 space-y-4 flex flex-col text-center">
+          <a
+            href="#about"
+            onclick="toggleMobileMenu()"
+            class="block text-gray-300 hover:text-neon px-3 py-3 rounded-md text-lg font-bold mono-font"
+            >DLACZEGO MY</a
+          >
+          <a
+            href="#workflow-demo"
+            onclick="toggleMobileMenu()"
+            class="block text-gray-300 hover:text-neon px-3 py-3 rounded-md text-lg font-bold mono-font"
+            >JAK TO DZIAŁA</a
+          >
+          <a
+            href="#services"
+            onclick="toggleMobileMenu()"
+            class="block text-gray-300 hover:text-neon px-3 py-3 rounded-md text-lg font-bold mono-font"
+            >OFERTA</a
+          >
+          <a
+            href="#contact"
+            onclick="toggleMobileMenu()"
+            class="inline-block bg-neon-green text-black px-6 py-3 rounded text-lg font-bold uppercase w-full mono-font"
+            >Kontakt_</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION (Z ANIMACJĄ TŁA) -->
+    <header
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-10"
+    >
+      <!-- Canvas tylko tutaj -->
+      <canvas id="hero-canvas"></canvas>
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-[#050505]/70 to-[#050505] z-0 pointer-events-none"
+      ></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <div
+          class="inline-flex items-center gap-3 mb-8 px-5 py-2 border border-neon-green/30 rounded-full bg-black/60 backdrop-blur-md shadow-[0_0_20px_rgba(57,255,20,0.15)] animate-fade-in"
+        >
+          <span class="relative flex h-2.5 w-2.5">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"
+            ></span>
+          </span>
+          <span
+            class="text-neon text-xs tracking-[0.2em] uppercase font-bold mono-font"
+            >Automatyzacja 24/7</span
+          >
+        </div>
+
+        <h1
+          class="text-5xl sm:text-6xl md:text-8xl font-black mb-8 tracking-tight leading-[1.1] text-white mono-font"
+        >
+          Odzyskaj Czas.<br />
+          <span class="neon-blink block mt-2 md:inline md:mt-0"
+            >Czas na rozwój.</span
+          >
+        </h1>
+
+        <p
+          class="mt-8 max-w-3xl mx-auto text-lg md:text-2xl text-gray-400 font-light leading-relaxed px-4"
+        >
+          Przestań tracić czas na powtarzalne zadania. Wdrażamy systemy, które
+          pracują dla Ciebie non-stop.
+          <span class="text-white font-medium"
+            >Pozwól technologii zająć się nudą, a Ty buduj strategię.</span
+          >
+        </p>
+
+        <div
+          class="mt-12 flex flex-col sm:flex-row justify-center gap-6 px-4 sm:px-0"
+        >
+          <a
+            href="#contact"
+            class="btn-ghosty px-10 py-5 rounded-lg text-lg flex items-center justify-center gap-3 w-full sm:w-auto shadow-lg mono-font"
+          >
+            <i data-lucide="mail" class="w-6 h-6"></i> Skontaktuj się
+          </a>
+          <a
+            href="#services"
+            class="px-10 py-5 rounded-lg text-lg font-bold text-white border border-gray-700 hover:border-white transition-all flex items-center justify-center gap-3 backdrop-blur-sm bg-white/5 hover:bg-white/10 w-full sm:w-auto mono-font"
+          >
+            Zobacz Ofertę <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- LOGA PARTNERÓW -->
+    <section
+      class="py-12 border-y border-gray-900 bg-[#020202]/80 backdrop-blur-sm relative"
+    >
+      <div class="max-w-7xl mx-auto px-6 mb-6 text-center">
+        <p class="text-xs text-gray-500 uppercase tracking-[0.3em] mono-font">
+          Wspieramy nowoczesne firmy
+        </p>
+      </div>
+      <div class="marquee-gradient marquee-left"></div>
+      <div class="marquee-gradient marquee-right"></div>
+      <div class="marquee-container">
+        <div
+          class="marquee-content gap-20 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-700 cursor-default"
+        >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="triangle" class="text-neon w-8 h-8"></i>
+            NEXUS_GROUP</span
+          >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="circle" class="text-neon w-8 h-8"></i>
+            ORBITAL_AI</span
+          >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="hexagon" class="text-neon w-8 h-8"></i>
+            DATA_LOGIC</span
+          >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="box" class="text-neon w-8 h-8"></i> SYNERGY</span
+          >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="cpu" class="text-neon w-8 h-8"></i> CORE_TECH</span
+          >
+          <!-- Powtórka -->
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="triangle" class="text-neon w-8 h-8"></i>
+            NEXUS_GROUP</span
+          >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="circle" class="text-neon w-8 h-8"></i>
+            ORBITAL_AI</span
+          >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="hexagon" class="text-neon w-8 h-8"></i>
+            DATA_LOGIC</span
+          >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="box" class="text-neon w-8 h-8"></i> SYNERGY</span
+          >
+          <span
+            class="text-2xl font-bold mono-font text-white flex items-center gap-3"
+            ><i data-lucide="cpu" class="text-neon w-8 h-8"></i> CORE_TECH</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- O NAS (POPRAWIONE IKONY) -->
+    <section id="about" class="py-24 bg-[#080808]/90 backdrop-blur-sm">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white mono-font">
+          Dlaczego <span class="text-neon">Ghosty!</span>?
+        </h2>
+        <p class="text-gray-400 text-xl leading-relaxed mb-12">
+          Większość firm wykonuje codziennie setki niepotrzebnych kliknięć. My
+          to eliminujemy. Wdrażamy systemy, które działają w tle – cicho, szybko
+          i bezbłędnie.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+          <!-- KARTA 1 -->
+          <div
+            class="why-us-card flex flex-col items-center md:items-start p-6 bg-[#111] border border-gray-800 rounded-2xl hover:border-neon-green transition-colors group cursor-default"
+          >
+            <div
+              class="icon-circle bg-black p-4 rounded-full border border-gray-700 mb-4 text-gray-400"
+            >
+              <i data-lucide="clock" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-white font-bold text-xl mb-2 mono-font">
+              Więcej Czasu
+            </h4>
+            <p class="text-gray-500 text-sm text-center md:text-left">
+              Nasi klienci oszczędzają średnio 30% czasu pracy w miesiącu.
+            </p>
+          </div>
+
+          <!-- KARTA 2 -->
+          <div
+            class="why-us-card flex flex-col items-center md:items-start p-6 bg-[#111] border border-gray-800 rounded-2xl hover:border-neon-green transition-colors group cursor-default"
+          >
+            <div
+              class="icon-circle bg-black p-4 rounded-full border border-gray-700 mb-4 text-gray-400"
+            >
+              <i data-lucide="trending-up" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-white font-bold text-xl mb-2 mono-font">
+              Wzrost Zysków
+            </h4>
+            <p class="text-gray-500 text-sm text-center md:text-left">
+              Mniejsze koszty operacyjne to czysty zysk dla Twojej firmy.
+            </p>
+          </div>
+
+          <!-- KARTA 3 -->
+          <div
+            class="why-us-card flex flex-col items-center md:items-start p-6 bg-[#111] border border-gray-800 rounded-2xl hover:border-neon-green transition-colors group cursor-default"
+          >
+            <div
+              class="icon-circle bg-black p-4 rounded-full border border-gray-700 mb-4 text-gray-400"
+            >
+              <i data-lucide="check-circle" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-white font-bold text-xl mb-2 mono-font">
+              Zero Błędów
+            </h4>
+            <p class="text-gray-500 text-sm text-center md:text-left">
+              Boty nie robią literówek i nie zapominają o wysłaniu maila.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERAKTYWNE DEMO (STYLE N8N) -->
+    <section id="workflow-demo" class="py-24 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+          <span
+            class="text-neon font-bold tracking-widest uppercase text-sm mono-font"
+            >Sprawdź sam</span
+          >
+          <h2 class="text-3xl md:text-5xl font-bold text-white mt-2 mono-font">
+            Zobacz, jakie to proste
+          </h2>
+          <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+            Kliknij przycisk "URUCHOM", aby zobaczyć przykładowy proces
+            automatyzacji obiegu faktury.
+          </p>
+        </div>
+
+        <div
+          class="bg-[#0a0a0a]/90 backdrop-blur-md border border-gray-800 rounded-2xl p-8 md:p-12 shadow-2xl relative"
+        >
+          <!-- Toolbar -->
+          <div
+            class="absolute top-0 left-0 w-full bg-[#111] border-b border-gray-800 h-14 rounded-t-2xl flex items-center px-6 gap-4"
+          >
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <span class="text-gray-400 text-xs font-mono ml-4"
+              >Demo_Workflow.json</span
+            >
+            <button
+              onclick="runSimulation()"
+              id="execBtn"
+              class="ml-auto bg-green-600 hover:bg-green-500 text-white px-5 py-1.5 rounded text-xs font-bold transition-colors tracking-wider mono-font"
+            >
+              URUCHOM PROCES
+            </button>
+          </div>
+
+          <!-- Simulator (n8n Style) -->
+          <div
+            class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 relative min-h-[350px] md:min-h-[250px] pt-8 md:pt-0"
+          >
+            <!-- Node 1 -->
+            <div id="node-1" class="n8n-node z-10">
+              <div class="n8n-node-header bg-blue-500"></div>
+              <div class="n8n-node-content">
+                <div
+                  class="w-8 h-8 rounded bg-blue-500/20 flex items-center justify-center"
+                >
+                  <i data-lucide="inbox" class="w-4 h-4 text-blue-400"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] text-gray-400 font-bold uppercase">
+                    Trigger
+                  </div>
+                  <div class="text-xs text-white font-bold">Nowy E-mail</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Line 1 -->
+            <div
+              id="line-1"
+              class="connection-line w-2 h-16 md:w-full md:h-1 flex-1 relative"
+            ></div>
+
+            <!-- Node 2 -->
+            <div id="node-2" class="n8n-node z-10">
+              <div class="n8n-node-header bg-orange-500"></div>
+              <div class="n8n-node-content">
+                <div
+                  class="w-8 h-8 rounded bg-orange-500/20 flex items-center justify-center"
+                >
+                  <i
+                    data-lucide="scan-line"
+                    class="w-4 h-4 text-orange-400"
+                  ></i>
+                </div>
+                <div>
+                  <div class="text-[10px] text-gray-400 font-bold uppercase">
+                    OpenAI
+                  </div>
+                  <div class="text-xs text-white font-bold">Odczyt Danych</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Line 2 -->
+            <div
+              id="line-2"
+              class="connection-line w-2 h-16 md:w-full md:h-1 flex-1 relative"
+            ></div>
+
+            <!-- Node 3 -->
+            <div id="node-3" class="n8n-node z-10">
+              <div class="n8n-node-header bg-green-500"></div>
+              <div class="n8n-node-content">
+                <div
+                  class="w-8 h-8 rounded bg-green-500/20 flex items-center justify-center"
+                >
+                  <i data-lucide="database" class="w-4 h-4 text-green-400"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] text-gray-400 font-bold uppercase">
+                    CRM
+                  </div>
+                  <div class="text-xs text-white font-bold">Zapis w Bazie</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success Msg (Fixed Browser Style) -->
+          <div
+            id="success-message"
+            class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
+          >
+            <div
+              class="bg-black/95 backdrop-blur-xl border border-gray-700 rounded-lg shadow-[0_0_50px_rgba(57,255,20,0.3)] popup-animate w-[300px] overflow-hidden"
+            >
+              <!-- Pasek tytułowy okienka -->
+              <div
+                class="bg-[#1a1a1a] px-3 py-2 flex items-center gap-2 border-b border-gray-800"
+              >
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <span class="text-[10px] text-gray-500 font-mono ml-2"
+                  >Success.js</span
+                >
+              </div>
+              <!-- Treść -->
+              <div class="p-6 text-center">
+                <div
+                  class="w-12 h-12 bg-neon-green/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-neon-green"
+                >
+                  <i
+                    data-lucide="check"
+                    class="w-6 h-6 text-neon stroke-[3]"
+                  ></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-1 mono-font">
+                  GOTOWE!
+                </h3>
+                <p class="text-gray-400 text-xs mb-4">
+                  Zaoszczędzono: <span class="text-neon font-bold">5 min</span>
+                </p>
+                <button
+                  onclick="resetSimulation()"
+                  class="bg-[#222] hover:bg-[#333] border border-gray-700 text-white text-xs px-4 py-2 rounded font-mono transition-colors"
+                >
+                  Zamknij
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFERTA (MNIEJ ANIMACYJNA) -->
+    <section id="services" class="py-24 relative bg-black/80 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-20">
+          <span
+            class="text-neon font-bold tracking-widest uppercase text-sm mono-font"
+            >Oferta</span
+          >
+          <h2 class="text-4xl md:text-5xl font-bold text-white mt-3 mono-font">
+            Co możemy dla Ciebie zrobić?
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- 1 -->
+          <div class="service-card p-10 rounded-2xl group">
+            <div
+              class="icon-box w-16 h-16 bg-[#111] rounded-2xl flex items-center justify-center mb-8 border border-gray-800 text-white"
+            >
+              <i data-lucide="boxes" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 mono-font">
+              Smart Magazyn
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              System sam pilnuje towaru. Gdy czegoś brakuje, automatycznie
+              wysyła zamówienie do dostawcy. Nigdy nie zabraknie Ci produktów.
+            </p>
+          </div>
+
+          <!-- 2 -->
+          <div class="service-card p-10 rounded-2xl group">
+            <div
+              class="icon-box w-16 h-16 bg-[#111] rounded-2xl flex items-center justify-center mb-8 border border-gray-800 text-white"
+            >
+              <i data-lucide="file-check" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 mono-font">
+              Faktury na Autopilocie
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Koniec z ręcznym wpisywaniem faktur. Nasz system sam odczytuje
+              dane z PDF i wprowadza je do Twojego programu księgowego.
+            </p>
+          </div>
+
+          <!-- 3 -->
+          <div
+            class="service-card p-10 rounded-2xl group border border-neon-green/30 relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 bg-neon-green text-black text-xs font-bold px-4 py-2 rounded-bl-xl font-mono"
+            >
+              POPULARNE
+            </div>
+            <div
+              class="icon-box w-16 h-16 bg-[#111] rounded-2xl flex items-center justify-center mb-8 border border-gray-800 text-white"
+            >
+              <i data-lucide="message-circle" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 mono-font">
+              Chatboty AI
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Inteligentny asystent, który odpisuje klientom w nocy i w
+              weekendy. Sprzedaje, umawia spotkania i odpowiada na pytania.
+            </p>
+          </div>
+
+          <!-- 4 -->
+          <div class="service-card p-10 rounded-2xl group">
+            <div
+              class="icon-box w-16 h-16 bg-[#111] rounded-2xl flex items-center justify-center mb-8 border border-gray-800 text-white"
+            >
+              <i data-lucide="share-2" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 mono-font">
+              Integracja Systemów
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Łączymy wszystko w całość. Twój sklep internetowy, Allegro,
+              magazyn i księgowość będą ze sobą "rozmawiać" automatycznie.
+            </p>
+          </div>
+
+          <!-- 5 -->
+          <div class="service-card p-10 rounded-2xl group lg:col-span-2">
+            <div
+              class="flex flex-col md:flex-row gap-8 items-start md:items-center"
+            >
+              <div
+                class="icon-box w-16 h-16 bg-[#111] rounded-2xl flex-shrink-0 flex items-center justify-center border border-gray-800 text-white"
+              >
+                <i data-lucide="pie-chart" class="w-8 h-8"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-4 mono-font">
+                  Raporty i Powiadomienia
+                </h3>
+                <p class="text-gray-400 leading-relaxed">
+                  Codziennie rano otrzymasz krótki raport SMS lub e-mail z
+                  wynikami sprzedaży. Będziesz wiedzieć wszystko, nie otwierając
+                  komputera.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KROKI WDROŻENIA (POZIOMO + AUTO LOOP) -->
+    <section
+      class="py-24 bg-black/90 backdrop-blur-md border-y border-gray-900"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-white mono-font">
+            Jak to robimy?
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative items-center"
+        >
+          <!-- Linia (tylko desktop) -->
+          <div
+            class="hidden md:block absolute top-14 left-[15%] right-[15%] h-0.5 bg-gray-800 z-0"
+          ></div>
+
+          <div class="p-4 relative z-10 step-container" id="step-1">
+            <div
+              class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-2xl font-bold font-mono step-circle"
+            >
+              1
+            </div>
+            <h4 class="text-white font-bold mb-2 mono-font">Rozmowa</h4>
+            <p class="text-gray-500 text-sm">Mówisz nam, co zajmuje Ci czas.</p>
+          </div>
+          <div class="p-4 relative z-10 step-container" id="step-2">
+            <div
+              class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-2xl font-bold font-mono step-circle"
+            >
+              2
+            </div>
+            <h4 class="text-white font-bold mb-2 mono-font">Projekt</h4>
+            <p class="text-gray-500 text-sm">Pokazujemy plan automatyzacji.</p>
+          </div>
+          <div class="p-4 relative z-10 step-container" id="step-3">
+            <div
+              class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 text-2xl font-bold font-mono step-circle"
+            >
+              3
+            </div>
+            <h4 class="text-white font-bold mb-2 mono-font">Start</h4>
+            <p class="text-gray-500 text-sm">
+              Wdrażamy system w Twojej firmie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARZ KONTAKTOWY -->
+    <section id="contact" class="py-24 relative bg-transparent">
+      <div class="max-w-3xl mx-auto px-6 lg:px-8 relative z-10">
+        <div
+          class="bg-[#0a0a0a]/95 backdrop-blur-md border border-gray-800 p-8 md:p-14 rounded-3xl shadow-2xl relative overflow-hidden"
+        >
+          <div
+            class="absolute -top-32 -right-32 w-96 h-96 bg-neon-green blur-[150px] opacity-10 pointer-events-none"
+          ></div>
+
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-white mono-font">
+              Napisz do nas
+            </h2>
+            <p class="mt-3 text-gray-400">
+              Wycena jest darmowa. Odpisujemy w ciągu 24 godzin.
+            </p>
+          </div>
+
+          <form
+            onsubmit="event.preventDefault(); alert('Dziękujemy! Odezwiemy się wkrótce.');"
+            class="space-y-6"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label
+                  class="text-xs text-neon uppercase tracking-wider font-bold mono-font"
+                  >Imię / Firma</label
+                >
+                <input
+                  type="text"
+                  required
+                  class="w-full bg-black border border-gray-800 rounded-lg p-4 text-white focus:border-neon-green focus:ring-1 focus:ring-neon-green outline-none transition-all"
+                  placeholder="Nazwa firmy"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-xs text-neon uppercase tracking-wider font-bold mono-font"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  required
+                  class="w-full bg-black border border-gray-800 rounded-lg p-4 text-white focus:border-neon-green focus:ring-1 focus:ring-neon-green outline-none transition-all"
+                  placeholder="twoj@email.pl"
+                />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label
+                class="text-xs text-neon uppercase tracking-wider font-bold mono-font"
+                >Wiadomość</label
+              >
+              <textarea
+                rows="4"
+                class="w-full bg-black border border-gray-800 rounded-lg p-4 text-white focus:border-neon-green focus:ring-1 focus:ring-neon-green outline-none transition-all"
+                placeholder="Co chcesz zautomatyzować?"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full btn-ghosty py-4 rounded-lg uppercase tracking-widest text-lg shadow-xl hover:shadow-2xl font-bold mono-font"
+            >
+              Wyślij
+            </button>
+            <p class="text-center text-xs text-gray-600 mt-4">
+              Twoje dane są u nas bezpieczne.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black/90 backdrop-blur-md border-t border-gray-900 py-16">
+      <div
+        class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8"
+      >
+        <div class="flex items-center gap-3">
+          <!-- Małe logo w stopce - TEKST -->
+          <span class="text-xl font-bold text-white mono-font">Ghosty!</span>
+        </div>
+        <div class="text-gray-500 text-sm text-center">
+          &copy; 2025 Ghosty Automation. Wszystkie prawa zastrzeżone.
+        </div>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-400 hover:text-neon transition-colors"
+            ><i data-lucide="linkedin" class="w-6 h-6"></i
+          ></a>
+          <a href="#" class="text-gray-400 hover:text-neon transition-colors"
+            ><i data-lucide="facebook" class="w-6 h-6"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SKRYPTY -->
+    <script>
+      // Ikony
+      lucide.createIcons();
+
+      // Menu Mobilne
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        const nav = document.getElementById("navbar");
+        if (menu.style.maxHeight) {
+          menu.style.maxHeight = null;
+          menu.style.opacity = 0;
+        } else {
+          menu.style.maxHeight = "400px";
+          menu.style.opacity = 1;
+        }
+      }
+
+      // --- STEP HIGHLIGHT LOOP (Jak to robimy) ---
+      function startStepLoop() {
+        const steps = [
+          document.querySelector("#step-1 .step-circle"),
+          document.querySelector("#step-2 .step-circle"),
+          document.querySelector("#step-3 .step-circle"),
+        ];
+        let current = 0;
+
+        setInterval(() => {
+          // Remove active from all
+          steps.forEach((s) => s.classList.remove("active-step"));
+          // Add active to current
+          if (steps[current]) {
+            steps[current].classList.add("active-step");
+          }
+          // Next step
+          current = (current + 1) % steps.length;
+        }, 1500); // Change every 1.5s
+      }
+      startStepLoop();
+
+      // --- MAIN WORKFLOW SIMULATOR (MODIFIED FOR N8N STYLE) ---
+      function runSimulation() {
+        const btn = document.getElementById("execBtn");
+        const nodes = ["node-1", "line-1", "node-2", "line-2", "node-3"];
+        const successMsg = document.getElementById("success-message");
+
+        resetSimulation();
+        btn.innerText = "PRZETWARZANIE...";
+        btn.disabled = true;
+        btn.classList.add("opacity-50");
+
+        let delay = 100;
+        nodes.forEach((id, index) => {
+          setTimeout(() => {
+            document.getElementById(id).classList.add("active");
+          }, delay);
+          delay += 500;
+        });
+
+        setTimeout(() => {
+          successMsg.classList.remove("hidden");
+          btn.innerText = "GOTOWE";
+        }, delay);
+      }
+
+      function resetSimulation() {
+        document
+          .querySelectorAll(".n8n-node, .connection-line")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById("success-message").classList.add("hidden");
+        const btn = document.getElementById("execBtn");
+        btn.innerText = "URUCHOM PROCES";
+        btn.disabled = false;
+        btn.classList.remove("opacity-50");
+      }
+
+      // --- BACKGROUND PARTICLES (Original Network Effect) ---
+      const canvas = document.getElementById("hero-canvas");
+      const ctx = canvas.getContext("2d");
+      let width,
+        height,
+        particles = [],
+        mouse = { x: null, y: null };
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+          this.size = Math.random() * 2 + 1;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+        draw() {
+          ctx.fillStyle = "#39FF14";
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particles = [];
+        const count = window.innerWidth < 768 ? 40 : 100;
+        for (let i = 0; i < count; i++) particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.strokeStyle = "rgba(57, 255, 20, 0.15)";
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+
+          // Connect to neighbors
+          for (let j = i; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x;
+            let dy = particles[i].y - particles[j].y;
+            let d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 100) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+
+          // Connect to mouse
+          if (mouse.x != null) {
+            let dx = particles[i].x - mouse.x;
+            let dy = particles[i].y - mouse.y;
+            let d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 150) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(57, 255, 20, ${1 - d / 150})`;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener("resize", () => {
+        resize();
+        initParticles();
+      });
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      window.addEventListener(
+        "touchmove",
+        (e) => {
+          mouse.x = e.touches[0].clientX;
+          mouse.y = e.touches[0].clientY;
+        },
+        { passive: true }
+      );
+      window.addEventListener("mouseout", () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      resize();
+      initParticles();
+      animate();
+    </script>
+  </body>
+</html>
